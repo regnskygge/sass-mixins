@@ -1,0 +1,43 @@
+// Creates a button for a link or input. 
+// Requires:  color-contrast function to determine the best text color
+
+@mixin simple-button($bg-color: $link-standard, $text_color: #fff) {
+    $bg-color-hover: lighten($bg-color, 5%);
+
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none !important;
+    padding: .25em 1.5em;
+    @include rounded(4px);
+    @include transition(0.1s);
+    @include border-radius(4px);
+    background-color: $bg-color;
+    color: color-contrast($bg-color);
+
+    &:hover {
+        text-decoration: none;
+        background-color: $bg-color-hover;
+        color: color-contrast($bg-color-hover);
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+        color: saturate($bg-color, 15%);
+    }
+}
+
+@mixin simple-button-icon($path, $position: left) {
+    padding-#{$position}: 2em;
+    background-image: url($path);
+    background-repeat: no-repeat;
+    background-size: 1.5em;
+    background-position-y: center;
+    @if $position == 'right' {
+        background-position-x: calc(100% - 0.5em);
+    } @else {
+        background-position-x: 0.25em;
+    }
+}
