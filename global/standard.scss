@@ -1,0 +1,32 @@
+// Set rem font sizing
+@mixin font-size($sizeValue: 1.6) {
+    font-size: ($sizeValue * 10) + px;
+    font-size: $sizeValue + rem;
+}
+
+// Hides element offscreen while maintaining accessiblity
+@mixin hide-offscreen {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+// Negates a hide-offscreen, specifically, and is not really good for anything else
+@mixin undo-hide-offscreen {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    overflow: visible;
+}
+
+// Sets a background gradient
+// @mixin gradient($from, $to) {
+//     background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+//     background: -moz-linear-gradient(top,  $from, $to);
+//     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+// }
